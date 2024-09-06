@@ -2,6 +2,9 @@
 # /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 # Keyhints. Idea got from Garuda Hyprland
 
+# GDK BACKEND. Change to either wayland or x11 if having issues
+BACKEND=wayland
+
 # Detect monitor resolution and scale
 x_mon=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width')
 y_mon=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .height')
@@ -28,7 +31,7 @@ dynamic_width=$(($dynamic_width > $max_width ? $max_width : $dynamic_width))
 dynamic_height=$(($dynamic_height > $max_height ? $max_height : $dynamic_height))
 
 # Launch yad with calculated width and height
-yad --width=$dynamic_width --height=$dynamic_height \
+GDK_BACKEND=$BACKEND yad --width=$dynamic_width --height=$dynamic_height \
     --center \
     --title="Keybindings" \
     --no-buttons \
@@ -45,10 +48,11 @@ yad --width=$dynamic_width --height=$dynamic_height \
 " T" "Open File Manager" "(Thunar)" \
 " S" "Google Search" "(rofi)" \
 " Q" "close active window" "(not kill)" \
-" Shift Q " "closes a specified window" "(window)" \
+" Shift Q " "kills an active window" "(kill)" \
 " Z" "Desktop Zoom" "(pyprland)" \
 " Alt V" "Clipboard Manager" "(cliphist)" \
 " W" "Choose wallpaper" "(Wallpaper Menu)" \
+" Shift W" "Choose wallpaper effects" "(imagemagick + swww)" \
 "CTRL ALT W" "Random wallpaper" "(via swww)" \
 " B" "Hide/UnHide Waybar" "waybar" \
 " CTRL B" "Choose waybar styles" "(waybar styles)" \
@@ -58,6 +62,8 @@ yad --width=$dynamic_width --height=$dynamic_height \
 " Print" "screenshot" "(grim)" \
 " Shift Print" "screenshot region" "(grim + slurp)" \
 " Shift S" "screenshot region" "(swappy)" \
+" CTRL Print" "screenshot timer 5 secs " "(grim)" \
+" CTRL SHIFT Print" "screenshot timer 10 secs " "(grim)" \
 "ALT Print" "Screenshot active window" "active window only" \
 "CTRL ALT P" "power-menu" "(wlogout)" \
 "CTRL ALT L" "screen lock" "(hyprlock)" \

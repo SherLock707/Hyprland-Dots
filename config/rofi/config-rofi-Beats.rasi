@@ -10,6 +10,5 @@ entry {
 
 /* ---- Listview ---- */
 listview {
-  lines: 6;
-  scrollbar: true;
+  lines: 7;
 }
