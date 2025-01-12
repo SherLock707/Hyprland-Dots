@@ -43,7 +43,7 @@ window {
     transparency:               "real";
     cursor:                     "default";
     spacing:                    0px;
-    border:                     2px;
+    border:                     4px 0px 4px 0px;
     border-radius:              30px;
     location:                   center;
     anchor:                     center;
@@ -55,7 +55,7 @@ window {
 
 /* ----- Main Box ----- */
 mainbox {
-	padding:					 15px;
+	padding:					 12px;
     enabled:                     true;
     orientation:                 vertical;
     children:                    [ "inputbar", "listbox" ];
@@ -66,7 +66,7 @@ mainbox {
 /* ---- Inputbar ---- */
 inputbar {
     enabled:                     true;
-    padding:                     10px 10px 100px 10px;
+    padding:                     10px 10px 50px 10px;
     margin:                      10px;
     background-color:            transparent;
     border-radius:               25px;
@@ -175,9 +175,13 @@ element normal.active {
 }
 
 element selected.normal {
-    background-color:            @selected;
-    text-color:                  @text-selected;
+    border:                      1px 6px 1px 6px;
+    border-radius:               16px;
+    border-color:                @selected;
+    background-color:            transparent;
+    text-color:                  @selected;
 }
+
 element selected.urgent {
     background-color:            @urgent;
     text-color:                  @text-selected;
@@ -202,7 +206,6 @@ element alternate.active {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        36px;
     cursor:                      inherit;
 }
 element-text {

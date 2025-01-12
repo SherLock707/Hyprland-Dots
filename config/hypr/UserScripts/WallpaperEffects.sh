@@ -1,7 +1,7 @@
 #!/bin/bash
 # /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
-# Wallpaper Effects using ImageMagick
-# Inspiration from ML4W - Stephan Raabe https://gitlab.com/stephan-raabe/dotfiles
+# Wallpaper Effects using ImageMagick (SUPER SHIFT W)
+# Inspiration from ML4W - Stephan Raabe https://github.com/mylinuxforwork/dotfiles
 
 # Variables
 current_wallpaper="$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
@@ -78,11 +78,11 @@ main() {
             # Execute swww command after image conversion
             swww img -o "$focused_monitor" "$wallpaper_output" $SWWW_PARAMS &
             # Wait for swww command to complete
-            wait $!
+            sleep 2
             # Wait for other commands to finish
             wallust run "$wallpaper_output" -s &
             # Wait for other commands to finish
-            wait $!
+            sleep 0.5
             # Refresh rofi, waybar, wallust palettes
             "${SCRIPTSDIR}/Refresh.sh"
             notify-send -u low -i "$iDIR/bell.png" "$choice effects applied"
